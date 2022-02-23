@@ -9,6 +9,10 @@ import org.howard.edu.lsp.assignment5.implementation.IntegerSetException;
  */
 public class Driver {
 
+	/**
+	 * Test IntegerSet implementation
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		//call constructor
 		IntegerSet set1 = new IntegerSet();
