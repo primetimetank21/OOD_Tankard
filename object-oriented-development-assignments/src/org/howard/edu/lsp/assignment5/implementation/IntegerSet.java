@@ -48,7 +48,7 @@ public class IntegerSet  {
 	 */
 	public boolean equals(IntegerSet intSetb) {
 		//true if both are empty sets
-		if(this.length() == 0 && intSetb.length() == 0) return true;
+		if(this.isEmpty() && intSetb.isEmpty()) return true;
 		
 		//false if sets are of different lengths
 		if(this.length() != intSetb.length()) return false;
@@ -81,16 +81,8 @@ public class IntegerSet  {
 	 * @throws IntegerSetException
 	 */
 	public int largest() throws IntegerSetException {
-		try {
-			if(this.length() == 0) throw new IntegerSetException("Set is empty");
-			
-			int num = Collections.max(this.set);
-			return num;
-		} catch(IntegerSetException e) {
-			System.out.println("Error in 'largest()': " + e);
-		}
-		
-		return 0;
+		if(this.isEmpty()) throw new IntegerSetException("Error in 'largest()': Set is empty");
+		return Collections.max(this.set);
 	}; 
 	
 	
@@ -100,17 +92,8 @@ public class IntegerSet  {
 	 * @throws IntegerSetException
 	 */
 	public int smallest() throws IntegerSetException {
-		try {
-			if(this.length() == 0) throw new IntegerSetException("Set is empty");
-			
-			int num = Collections.min(this.set);
-			return num;
-			
-		} catch(IntegerSetException e) {
-			System.out.println("Error in 'smallest()': " + e);
-		}
-		
-		return 0;
+		if(this.isEmpty()) throw new IntegerSetException("Error in 'smallest()': Set is empty");		
+		return Collections.min(this.set);
 	};
 	
 	
@@ -128,14 +111,8 @@ public class IntegerSet  {
 	 * @param item
 	 */
 	public void remove(int item) throws IntegerSetException {
-		try {
-			if(this.length() == 0) throw new IntegerSetException("Set is empty");
-			
-			if(this.set.contains(item)) this.set.remove(item);
-			
-		} catch(IntegerSetException e) {
-			System.out.println("Error in 'remove()': " + e);
-		}
+		if(this.isEmpty()) throw new IntegerSetException("Error in 'remove()': Set is empty");
+		if(this.set.contains(item)) this.set.remove(this.set.indexOf(item));
 	};
 	
 	
@@ -152,7 +129,7 @@ public class IntegerSet  {
 		unionSet.addAll(intSetb.set);
 		
 		//print elements
-		System.out.println("Union:");
+		System.out.print("Union: ");
 		for(int num : unionSet) {
 			System.out.print(Integer.toString(num) + " ");
 		}
@@ -173,7 +150,7 @@ public class IntegerSet  {
 		setCopy.retainAll(intSetb.set);
 		
 		//print elements
-		System.out.println("Intersect:");
+		System.out.print("Intersect: ");
 		for(int num : setCopy) {
 			System.out.print(Integer.toString(num) + " ");
 		}
@@ -194,7 +171,7 @@ public class IntegerSet  {
 		setCopy.removeAll(intSetbSetCopy);
 		
 		//print elements
-		System.out.println("Set Difference:");
+		System.out.print("Set Difference: ");
 		for(int num : setCopy) {
 			System.out.print(Integer.toString(num) + " ");
 		}
@@ -216,14 +193,14 @@ public class IntegerSet  {
 	 * Returns elements in the set
 	 */
 	public String toString() {
+		if(this.isEmpty()) return "no elements";
 		String elements = "";
 		for(int num : this.set) {
 			elements = elements.concat(Integer.toString(num)) + ", ";
 		}
 		
 		//removing the ", " off the last element
-		elements = elements.trim();
-		elements = elements.substring(0, elements.length() - 1);
+		elements = elements.substring(0, elements.length() - 2);
 		
 		return elements;
 	};
