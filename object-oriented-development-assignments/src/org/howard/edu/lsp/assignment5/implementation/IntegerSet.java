@@ -43,7 +43,7 @@ public class IntegerSet  {
 	/**
 	 * Returns true if the 2 sets are equal, false otherwise;
 	 * Two sets are equal if they contain all of the same values in ANY order.
-	 * @param b
+	 * @param intSetb -- another IntegerSet object
 	 * @return boolean
 	 */
 	public boolean equals(IntegerSet intSetb) {
@@ -67,7 +67,7 @@ public class IntegerSet  {
 	
 	/**
 	 * Returns true if the set contains the value, otherwise false
-	 * @param value
+	 * @param value -- element to look for
 	 * @return boolean
 	 */
 	public boolean contains(int value) {
@@ -78,7 +78,7 @@ public class IntegerSet  {
 	/**
 	 * Returns the largest item in the set; Throws a IntegerSetException if the set is empty
 	 * @return int
-	 * @throws IntegerSetException
+	 * @throws IntegerSetException -- empty set
 	 */
 	public int largest() throws IntegerSetException {
 		if(this.isEmpty()) throw new IntegerSetException("Error in 'largest()': Set is empty");
@@ -89,7 +89,7 @@ public class IntegerSet  {
 	/**
 	 * Returns the smallest item in the set; Throws a IntegerSetException if the set is empty
 	 * @return int
-	 * @throws IntegerSetException
+	 * @throws IntegerSetException -- empty set
 	 */
 	public int smallest() throws IntegerSetException {
 		if(this.isEmpty()) throw new IntegerSetException("Error in 'smallest()': Set is empty");		
@@ -99,7 +99,7 @@ public class IntegerSet  {
 	
 	/**
 	 * Adds an item to the set or does nothing if already in set
-	 * @param item
+	 * @param item -- element to add
 	 */
 	public void add(int item) {
 		if(!this.set.contains(item)) this.set.add(item);
@@ -108,7 +108,8 @@ public class IntegerSet  {
 	
 	/**
 	 * Removes an item from the set or does nothing if not in set
-	 * @param item
+	 * @param item -- element to remove
+	 * @throws IntegerSetException -- empty set
 	 */
 	public void remove(int item) throws IntegerSetException {
 		if(this.isEmpty()) throw new IntegerSetException("Error in 'remove()': Set is empty");
@@ -118,7 +119,7 @@ public class IntegerSet  {
 	
 	/**
 	 * Print elements present in the sets
-	 * @param intSetb
+	 * @param intSetb -- another IntegerSet object 
 	 */
 	public void union(IntegerSet intSetb) {
 		//create set to hold all elements
@@ -139,7 +140,7 @@ public class IntegerSet  {
 	
 	/**
 	 * Print elements in both sets
-	 * @param intSetb
+	 * @param intSetb -- another IntegerSet object
 	 */
 	public void intersect(IntegerSet intSetb) {
 		//create copy of this.set (reason: Collections.retainAll() changes object in-place;
@@ -160,7 +161,7 @@ public class IntegerSet  {
 	
 	/**
 	 * Print elements in this.set that are not in intSetb
-	 * @param intSetb
+	 * @param intSetb -- another IntegerSet object
 	 */
 	public void diff(IntegerSet intSetb) {
 		//cast sets (really ArrayLists) to HashSets
