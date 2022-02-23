@@ -10,11 +10,11 @@ public class IntegerSetException extends Exception {
 	
 	/**
 	 * Default Constructor
-	 * @param s
+	 * @param err -- error string
 	 */
-    public IntegerSetException(String s)
+    public IntegerSetException(String err)
     {
-       this.errorMsg = s;
+       this.errorMsg = err;
     }
     
     /**
