@@ -130,6 +130,11 @@ public class IntegerSet  {
 		
 		//print elements
 		System.out.print("Union: ");
+		if(unionSet.isEmpty()) {
+			System.out.println("no elements");
+			return;
+		}
+
 		for(int num : unionSet) {
 			System.out.print(Integer.toString(num) + " ");
 		}
@@ -151,6 +156,11 @@ public class IntegerSet  {
 		
 		//print elements
 		System.out.print("Intersect: ");
+		if(setCopy.isEmpty()) {
+			System.out.println("no elements");
+			return;
+		}
+
 		for(int num : setCopy) {
 			System.out.print(Integer.toString(num) + " ");
 		}
@@ -172,6 +182,11 @@ public class IntegerSet  {
 		
 		//print elements
 		System.out.print("Set Difference: ");
+		if(setCopy.isEmpty()) {
+			System.out.println("no elements");
+			return;
+		}
+
 		for(int num : setCopy) {
 			System.out.print(Integer.toString(num) + " ");
 		}

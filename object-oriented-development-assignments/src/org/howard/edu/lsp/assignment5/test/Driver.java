@@ -17,7 +17,9 @@ public class Driver {
 		//call constructor
 		System.out.println("***CONSTRUCTOR***\n");
 		IntegerSet set1 = new IntegerSet();
+		System.out.println("***Created set1***");
 		IntegerSet set2 = new IntegerSet();
+		System.out.println("***Created set2***");
 		System.out.println("\n***end CONSTRUCTOR***\n");
 		
 		//explicitly call toString
