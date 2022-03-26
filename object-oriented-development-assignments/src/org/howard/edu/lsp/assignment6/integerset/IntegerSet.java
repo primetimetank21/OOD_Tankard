@@ -19,7 +19,7 @@ public class IntegerSet  {
 	 */
 	public IntegerSet() {
 		this.set = new ArrayList<Integer>();
-	}
+	};
 
 	
 	/**
