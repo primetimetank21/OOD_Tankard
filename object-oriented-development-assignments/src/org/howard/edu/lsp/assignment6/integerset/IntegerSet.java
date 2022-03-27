@@ -21,7 +21,7 @@ public class IntegerSet  {
 		this.set = new ArrayList<Integer>();
 	};
 
-	
+
 	/**
 	 * Clears the internal representation of the set
 	 */
@@ -174,7 +174,7 @@ public class IntegerSet  {
 	 * Returns true if the set is empty, false otherwise
 	 * @return boolean
 	 */
-	boolean isEmpty() {
+	public boolean isEmpty() {
 		if(this.length() == 0) return true;
 		return false;
 	}; 
