@@ -1,15 +1,14 @@
 package org.howard.edu.lsp.assignment6.junit;
 
-import org.howard.edu.lsp.assignment6.integerset.*;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.*;
+import org.howard.edu.lsp.assignment6.integerset.IntegerSet;
+import org.howard.edu.lsp.assignment6.integerset.IntegerSetException;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.TestInfo;
 
 public class IntegerSetTest {
