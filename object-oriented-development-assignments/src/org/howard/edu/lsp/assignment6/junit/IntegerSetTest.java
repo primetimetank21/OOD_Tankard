@@ -1,10 +1,8 @@
 package org.howard.edu.lsp.assignment6.junit;
 
 import java.util.ArrayList;
-
+import org.howard.edu.lsp.assignment6.integerset.*;
 import static org.junit.jupiter.api.Assertions.*;
-import org.howard.edu.lsp.assignment6.integerset.IntegerSet;
-import org.howard.edu.lsp.assignment6.integerset.IntegerSetException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +11,7 @@ import org.junit.jupiter.api.TestInfo;
 
 public class IntegerSetTest {
 	@BeforeEach
-    public void initEach(TestInfo testInfo) {
+	public void initEach(TestInfo testInfo) {
     	System.out.println("Start..." + testInfo.getDisplayName());
     };
 
@@ -115,8 +113,7 @@ public class IntegerSetTest {
 		set1.add(3);
 
 		try {
-			int largestVal;
-			largestVal = set1.largest();
+			int largestVal = set1.largest();
 			assertEquals(largestVal, 3);
 			assertNotEquals(largestVal, 2);
 		} catch (IntegerSetException e1) {
@@ -145,8 +142,7 @@ public class IntegerSetTest {
 		set1.add(3);
 
 		try {
-			int smallestVal;
-			smallestVal = set1.smallest();
+			int smallestVal = set1.smallest();
 			assertEquals(smallestVal, 1);
 			assertNotEquals(smallestVal, 2);
 		} catch (IntegerSetException e1) {
@@ -209,10 +205,17 @@ public class IntegerSetTest {
 		//two empty sets
 		unionSet = set1.union(set2);
 		assertTrue(unionSet.size() == 0);
+
+		unionSet = set2.union(set1);
+		assertTrue(unionSet.size() == 0);
 		
 		//one empty set
 		set1.add(1);
 		unionSet = set1.union(set2);
+		assertTrue(unionSet.size() == 1);
+		assertTrue(unionSet.contains(1));
+
+		unionSet = set2.union(set1);
 		assertTrue(unionSet.size() == 1);
 		assertTrue(unionSet.contains(1));
 		
@@ -222,6 +225,11 @@ public class IntegerSetTest {
 		set1.add(4);
 		
 		unionSet = set1.union(set2);
+		assertTrue(unionSet.size() == 4);
+		for (int val = 1; val < unionSet.size() + 1; val++) 
+			assertTrue(unionSet.contains(val));
+		
+		unionSet = set2.union(set1);
 		assertTrue(unionSet.size() == 4);
 		for (int val = 1; val < unionSet.size() + 1; val++) 
 			assertTrue(unionSet.contains(val));
@@ -238,10 +246,17 @@ public class IntegerSetTest {
 		//two empty sets
 		intersectSet = set1.intersect(set2);
 		assertTrue(intersectSet.size() == 0);
-		
+
+		intersectSet = set2.intersect(set1);
+		assertTrue(intersectSet.size() == 0);
+
 		//one empty set
 		set1.add(1);
 		intersectSet = set1.intersect(set2);
+		assertTrue(intersectSet.size() == 0);
+		assertFalse(intersectSet.contains(1));
+
+		intersectSet = set2.intersect(set1);
 		assertTrue(intersectSet.size() == 0);
 		assertFalse(intersectSet.contains(1));
 		
@@ -257,6 +272,13 @@ public class IntegerSetTest {
 		assertTrue(intersectSet.contains(2));
 		assertFalse(intersectSet.contains(3));
 		assertFalse(intersectSet.contains(4));
+
+		intersectSet = set2.intersect(set1);
+		assertTrue(intersectSet.contains(1));
+		assertTrue(intersectSet.contains(2));
+		assertFalse(intersectSet.contains(3));
+		assertFalse(intersectSet.contains(4));
+
 	};
 
 
@@ -270,7 +292,10 @@ public class IntegerSetTest {
 		//two empty sets
 		diffSet = set1.diff(set2);
 		assertTrue(diffSet.size() == 0);
-		
+
+		diffSet = set2.diff(set1);
+		assertTrue(diffSet.size() == 0);
+
 		//one empty set
 		set1.add(1);
 
